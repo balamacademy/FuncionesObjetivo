@@ -10,7 +10,6 @@ def plot_beale_function():
     y = np.linspace(-4.5, 4.5, 400)
     x, y = np.meshgrid(x, y)
     z = beale_function(x, y)
-
     fig = plt.figure()
     ax = fig.add_subplot(111, projection='3d')
     surf = ax.plot_surface(x, y, z, cmap='viridis', edgecolor='none')
@@ -19,8 +18,5 @@ def plot_beale_function():
     ax.set_ylabel('y')
     ax.set_zlabel('f(x, y)')
     fig.colorbar(surf, shrink=0.5, aspect=5)
-
     plt.show()
-
-# Ejemplo de uso
 plot_beale_function()

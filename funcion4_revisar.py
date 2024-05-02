@@ -9,7 +9,6 @@ def plot_rosenbrock_function():
     y = np.linspace(-1, 3, 400)
     x, y = np.meshgrid(x, y)
     z = rosenbrock_function(x, y)
-
     fig, ax = plt.subplots()
     CS = ax.contour(x, y, z, np.logspace(-0.5, 3.5, 20, base=10), cmap='viridis')
     ax.plot(1, 1, 'r*', markersize=10)  # Mínimo global
@@ -17,8 +16,7 @@ def plot_rosenbrock_function():
     ax.set_xlabel('x')
     ax.set_ylabel('y')
     plt.colorbar(CS)
-
     plt.show()
 
-# Ejemplo de uso
+
 plot_rosenbrock_function()
