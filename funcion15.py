@@ -2,29 +2,31 @@ import numpy as np
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 
-def cross_in_tray_function(x, y):
-    return -0.0001 * (np.abs(np.sin(x) * np.sin(y) * np.exp(np.abs(100 - np.sqrt(x**2 + y**2) / np.pi))) + 1) ** 0.1
+def eggholder(x, y):
+    return (-(y + 47) * np.sin(np.sqrt(abs(x/2 + (y + 47)))) - x * np.sin(np.sqrt(abs(x - (y + 47)))))
+
+
+
+x = np.linspace(-512, 512, 100)
+y = np.linspace(-512, 512, 100)
+X, Y = np.meshgrid(x, y)
+Z = eggholder(X, Y)
+
+
+
+fig = plt.figure()
+ax = fig.add_subplot(111, projection='3d')
+ax.plot_surface(X, Y, Z, cmap='viridis')
 
 
 
 
+ax.set_xlabel('X')
+ax.set_ylabel('Y')
+ax.set_zlabel('Eggholder(X, Y)')
+ax.set_title('Función Eggholder')
 
-def plot_cross_in_tray_function():
-    fig = plt.figure()
-    ax = fig.add_subplot(111, projection='3d')
 
-    x = np.linspace(-10, 10, 100)
-    y = np.linspace(-10, 10, 100)
-    x, y = np.meshgrid(x, y)
-    z = cross_in_tray_function(x, y)
 
-    ax.plot_surface(x, y, z, cmap='viridis')
 
-    ax.set_xlabel('X')
-    ax.set_ylabel('Y')
-    ax.set_zlabel('Cross-in-Tray Function')
-    plt.title('Cross-in-Tray Function')
-
-    plt.show()
-
-plot_cross_in_tray_function()
+plt.show()
