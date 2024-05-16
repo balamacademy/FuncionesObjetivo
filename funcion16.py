@@ -7,26 +7,21 @@ def holder_table(x, y):
 
 
 
+def plot_holder_table():
+    x = np.linspace(-10, 10, 100)
+    y = np.linspace(-10, 10, 100)
+    X, Y = np.meshgrid(x, y)
+    Z = holder_table(X, Y)
 
-x = np.linspace(-10, 10, 100)
-y = np.linspace(-10, 10, 100)
-X, Y = np.meshgrid(x, y)
-Z = holder_table(X, Y)
+    fig = plt.figure()
+    ax = fig.add_subplot(111, projection='3d')
+    ax.plot_surface(X, Y, Z, cmap='viridis')
+    ax.set_xlabel('X')
+    ax.set_ylabel('Y')
+    ax.set_zlabel('HolderTable(X, Y)')
+    ax.set_title('Función Holder Table')
 
-
-
-
-fig = plt.figure()
-ax = fig.add_subplot(111, projection='3d')
-ax.plot_surface(X, Y, Z, cmap='viridis')
-
-
-
-ax.set_xlabel('X')
-ax.set_ylabel('Y')
-ax.set_zlabel('HolderTable(X, Y)')
-ax.set_title('Función Holder Table')
+    plt.show()
 
 
-
-plt.show()
+plot_holder_table()
