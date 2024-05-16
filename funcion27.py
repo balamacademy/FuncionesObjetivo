@@ -12,21 +12,24 @@ def constraint(x, y):
     return (x**2 + y**2) - (r_T + r_S * np.cos(n * np.arctan2(x, y)))**2
 
 
+def plot_simionescu_constraint():
+    x = np.linspace(-2, 2, 100)
+    y = np.linspace(-2, 2, 100)
+    X, Y = np.meshgrid(x, y)
+    Z_simionescu = simionescu(X, Y)
+    Z_constraint = constraint(X, Y)
 
-x = np.linspace(-2, 2, 100)
-y = np.linspace(-2, 2, 100)
-X, Y = np.meshgrid(x, y)
-Z_simionescu = simionescu(X, Y)
-Z_constraint = constraint(X, Y)
+
+    fig = plt.figure()
+    ax = fig.add_subplot(111, projection='3d')
+
+    ax.plot_surface(X, Y, Z_simionescu, cmap='viridis', alpha=0.7)
+    ax.plot_surface(X, Y, Z_constraint, color='red', alpha=0.2)
+    ax.set_xlabel('X')
+    ax.set_ylabel('Y')
+    ax.set_zlabel('Z')
+    ax.set_title("Simionescu Function Constrained")
+    plt.show()
 
 
-fig = plt.figure()
-ax = fig.add_subplot(111, projection='3d')
-
-ax.plot_surface(X, Y, Z_simionescu, cmap='viridis', alpha=0.7)
-ax.plot_surface(X, Y, Z_constraint, color='red', alpha=0.2)
-ax.set_xlabel('X')
-ax.set_ylabel('Y')
-ax.set_zlabel('Z')
-ax.set_title("Simionescu Function Constrained")
-plt.show()
+plot_simionescu_constraint()

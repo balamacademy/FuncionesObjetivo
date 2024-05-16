@@ -8,22 +8,22 @@ def gomez_and_levy_modified(x, y):
 def constraint(x, y):
     return -np.sin(4*np.pi*x) + 2*np.sin(2*np.pi*y)**2 - 1.5
 
-x = np.linspace(-2, 2, 100)
-y = np.linspace(-2, 2, 100)
-X, Y = np.meshgrid(x, y)
-Z_gomez_and_levy = gomez_and_levy_modified(X, Y)
-Z_constraint = constraint(X, Y)
+def plot_gomez_and_levy_modified_constraint():
+    x = np.linspace(-2, 2, 100)
+    y = np.linspace(-2, 2, 100)
+    X, Y = np.meshgrid(x, y)
+    Z_gomez_and_levy = gomez_and_levy_modified(X, Y)
+    Z_constraint = constraint(X, Y)
 
-fig = plt.figure()
-ax = fig.add_subplot(111, projection='3d')
+    fig = plt.figure()
+    ax = fig.add_subplot(111, projection='3d')
+    ax.plot_surface(X, Y, Z_gomez_and_levy, cmap='viridis', alpha=0.7)
+    ax.plot_surface(X, Y, Z_constraint, color='red', alpha=0.2)
+    ax.set_xlabel('X')
+    ax.set_ylabel('Y')
+    ax.set_zlabel('Z')
+    ax.set_title("Gómez and Levy Modified Function Constrained")
+    plt.show()
 
-ax.plot_surface(X, Y, Z_gomez_and_levy, cmap='viridis', alpha=0.7)
 
-ax.plot_surface(X, Y, Z_constraint, color='red', alpha=0.2)
-
-ax.set_xlabel('X')
-ax.set_ylabel('Y')
-ax.set_zlabel('Z')
-ax.set_title("Gómez and Levy Modified Function Constrained")
-
-plt.show()
+plot_gomez_and_levy_modified_constraint()
